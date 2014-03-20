@@ -4,7 +4,17 @@ window.NoteSquirrel = {
   Views: {},
   Routers: {},
   initialize: function() {
+    NoteSquirrel.dashboards = new NoteSquirrel.Collections.Dashboards();
 
+    NoteSquirrel.dashboards.fetch({
+      success: function() {
+        new NoteSquirrel.Routers.SquirrelRouter({
+          $rootEl: $('#content'),
+          dashboards: NoteSquirrel.dashboards
+        });
+        Backbone.history.start();
+      }
+    });
   }
 };
 
@@ -53,7 +63,7 @@ Backbone.CompositeView = Backbone.View.extend({
 
     _(this.subviews()).each(function(elSubviews, viewEl) {
       var $thisEl = that.$(viewEl);
-      var $thisEl.empty();
+      $thisEl.empty();
 
       _(elSubviews).each(function(view) {
         $thisEl.append(view.render().$el);

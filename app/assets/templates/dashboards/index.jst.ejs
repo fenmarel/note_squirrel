@@ -1,0 +1,3 @@
+<% dashboards.each(function(dash) { %>
+  <a href="#<%= dash.url() %>"><%= dash.escape('title') %></a><br>
+<% }); %>
