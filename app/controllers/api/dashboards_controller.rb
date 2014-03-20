@@ -2,7 +2,7 @@ class Api::DashboardsController < ApplicationController
   before_action :set_dashboard, :only => [:destroy, :show, :update]
 
   def create
-    @dashboard = Dashboard.new(dashboard_params)
+    @dashboard = current_user.dashboards.new(dashboard_params)
 
     if @dashboard.save
       render :json => @dashboard

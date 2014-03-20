@@ -2,13 +2,15 @@ NoteSquirrel.Routers.SquirrelRouter = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
     this.dashboards = options.dashboards;
+    this.bind("all", this.change);
   },
 
   routes: {
-    "": "dashboardIndex"
+    "": "dashboardsIndex",
+    "dashboards": "dashboardsIndex"
   },
 
-  dashboardIndex: function() {
+  dashboardsIndex: function() {
     var view = new NoteSquirrel.Views.DashboardsIndex({ collection: this.dashboards });
     this._swapView(view);
   },
