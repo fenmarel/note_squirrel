@@ -11,10 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320184606) do
+ActiveRecord::Schema.define(version: 20140320205646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dashboards", force: true do |t|
+    t.string   "title",      null: false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dashboards", ["user_id", "title"], name: "index_dashboards_on_user_id_and_title", unique: true, using: :btree
+  add_index "dashboards", ["user_id"], name: "index_dashboards_on_user_id", using: :btree
+
+  create_table "notebooks", force: true do |t|
+    t.string   "title",        null: false
+    t.integer  "dashboard_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notebooks", ["dashboard_id", "title"], name: "index_notebooks_on_dashboard_id_and_title", unique: true, using: :btree
+  add_index "notebooks", ["dashboard_id"], name: "index_notebooks_on_dashboard_id", using: :btree
+
+  create_table "notes", force: true do |t|
+    t.string   "title",       default: "Untitled", null: false
+    t.string   "body"
+    t.integer  "notebook_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notes", ["notebook_id"], name: "index_notes_on_notebook_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
