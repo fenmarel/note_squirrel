@@ -2,8 +2,7 @@ NoteSquirrel.Routers.SquirrelRouter = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
     this.dashboards = options.dashboards;
-    this.dashboards.fetch()
-    this.bind("all", this.change);
+    this.dashboards.fetch();
   },
 
   routes: {

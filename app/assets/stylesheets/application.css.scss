@@ -13,3 +13,20 @@
  */
 
 @import 'bootstrap';
+
+
+.glyphicon-remove {
+  font-size: 1.5em;
+  vertical-align: middle;
+  padding-bottom: 3px;
+  margin-left: 0.3em;
+  color: #A9A9A9;
+
+  &:hover {
+    color: #686868;
+  }
+}
+
+.submit-options {
+  margin-top: 3px;
+}

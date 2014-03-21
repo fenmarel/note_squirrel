@@ -1,3 +1,13 @@
+
+<div id="notebook-form-container"></div>
+
+<a id="new-notebook-toggle" class="list-group-item" href="#">
+  + New Notebook
+</a>
+
+
 <% notebooks.each(function(notebook) { %>
-  <li><a href="#<%= notebook.url() %>"><%= notebook.escape('title') %></a></li>
+  <a class="list-group-item" href="#<%= notebook.url() %>">
+    <%= notebook.escape('title') %>
+  </a>
 <% }); %>
