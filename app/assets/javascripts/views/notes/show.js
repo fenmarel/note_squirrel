@@ -20,11 +20,26 @@ NoteSquirrel.Views.NoteShow = Backbone.CompositeView.extend({
 
   template: JST['notes/show'],
 
+  events: {
+    "keyup #note-editor": "resetSaveTimeout"
+  },
+
   render: function() {
     var content = this.template({ note: this.model });
     this.$el.html(content);
     this.renderSubviews();
 
     return this;
+  },
+
+  resetSaveTimeout: function(event) {
+    var that = this;
+    this._timer && clearTimeout(this._timer);
+    this._timer = setTimeout(function() { that.updateBody(event) }, 3000);
+  },
+
+  updateBody: function(event) {
+    var data = $(event.target).serializeJSON();
+    this.model.save(data, { patch: true });
   }
 });

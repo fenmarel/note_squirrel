@@ -22,11 +22,25 @@ class Api::NotesController < ApplicationController
     render :json => @note
   end
 
+  def update
+    @note = Note.find(params[:id])
+
+    if @note.update(note_update_params)
+      render :json => @note
+    else
+      render :json => @note.errors, status: 422
+    end
+  end
+
 
   private
 
   def note_params
     notebook_id = { notebook_id: params[:notebook_id] }
     params.require(:note).permit(:title).merge(notebook_id)
+  end
+
+  def note_update_params
+    params.require(:note).permit(:body)
   end
 end
