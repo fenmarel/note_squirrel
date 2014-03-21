@@ -1,24 +1,31 @@
-NoteSquirrel.Views.DashboardShow = Backbone.View.extend({
+NoteSquirrel.Views.DashboardShow = Backbone.CompositeView.extend({
   initialize: function(options) {
     this.notebooks = this.model.notebooks();
 
     this.listenTo(this.model, "all", this.render);
     this.listenTo(this.notebooks, "all", this.render);
 
-    this.notebooks.fetch();
+    var that = this;
+    this.notebooks.fetch({
+      success: function(data) {
+        that.addNotebooks(data);
+      }
+    });
   },
 
-  tagName: 'ul',
-
-  template: JST['dashboards/show'],
+  template: JST['shared/show'],
 
   render: function() {
-    var contents = this.template({
-      dashboard: this.model,
-      notebooks: this.notebooks
-     });
+    var contents = this.template();
     this.$el.html(contents);
+    this.renderSubviews();
 
     return this;
+  },
+
+  addNotebooks: function(notebooks) {
+    var view = new NoteSquirrel.Views.NotebooksIndex({ collection: notebooks });
+    this.addSubview('#dashboard-pane', view);
+    view.render();
   }
 });

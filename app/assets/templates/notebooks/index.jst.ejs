@@ -1,0 +1,3 @@
+<% notebooks.each(function(notebook) { %>
+  <li><a href="#<%= notebook.url() %>"><%= notebook.escape('title') %></a></li>
+<% }); %>
