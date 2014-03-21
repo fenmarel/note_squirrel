@@ -1,4 +1,8 @@
 NoteSquirrel.Views.NotesIndex = Backbone.View.extend({
+  initialize: function() {
+    this.listenTo(this.collection, "all", this.render);
+  },
+
   template: JST['notes/index'],
 
   tagName: 'ul',

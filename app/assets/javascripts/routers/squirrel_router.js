@@ -7,13 +7,14 @@ NoteSquirrel.Routers.SquirrelRouter = Backbone.Router.extend({
   },
 
   routes: {
-    "": "dashboardsIndex",
+    "": "root",
     "api/dashboards/:id": "dashboardShow",
-    "api/notebooks/:id": "notebookShow"
+    "api/notebooks/:id": "notebookShow",
+    "api/notes/:id": "noteShow"
   },
 
-  dashboardsIndex: function() {
-    // this._emptyPanes();
+  root: function() {
+    // some default layout, please choose workspace info or something
   },
 
   dashboardShow: function(id) {
@@ -31,6 +32,18 @@ NoteSquirrel.Routers.SquirrelRouter = Backbone.Router.extend({
         that._swapView(view);
       }
     });
+  },
+
+  noteShow: function(id) {
+    var note = new NoteSquirrel.Models.Note({ id: id });
+    var that = this;
+
+    note.fetch({
+      success: function() {
+        var view = new NoteSquirrel.Views.NoteShow({ model: note });
+        that._swapView(view);
+      }
+    })
   },
 
   _swapView: function(view) {
