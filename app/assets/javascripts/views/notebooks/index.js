@@ -34,6 +34,7 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
   },
 
   createNotebook: function(event) {
+    event.preventDefault();
     var data = $(event.target).serializeJSON();
     var that = this;
 

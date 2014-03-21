@@ -1,3 +1,11 @@
+<div id="note-form-container"></div>
+
+<a id="new-note-toggle" class="list-group-item" href="#">
+  + New Note
+</a>
+
 <% notes.each(function(note) { %>
-  <li><a href="#<%= note.url() %>"><%= note.escape('title') %></a></li>
+  <a class="list-group-item" href="#<%= note.url() %>">
+    <%= note.escape('title') %>
+  </a>
 <% }); %>

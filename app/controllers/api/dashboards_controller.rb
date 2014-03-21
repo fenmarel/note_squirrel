@@ -7,7 +7,7 @@ class Api::DashboardsController < ApplicationController
     if @dashboard.save
       render :json => @dashboard
     else
-      render :json => @dashboard.errors
+      render :json => @dashboard.errors, status: 422
     end
   end
 
@@ -34,7 +34,7 @@ class Api::DashboardsController < ApplicationController
     if @dashboard.update(dashboard_params)
       render :json => @dashboard
     else
-      render :json => @dashboard.errors
+      render :json => @dashboard.errors, status: 422
     end
   end
 
