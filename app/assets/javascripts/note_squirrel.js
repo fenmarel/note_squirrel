@@ -9,7 +9,6 @@ window.NoteSquirrel = {
     NoteSquirrel.dashboards.fetch({
       success: function() {
         new NoteSquirrel.Routers.SquirrelRouter({
-          $rootEl: $('#content'),
           dashboards: NoteSquirrel.dashboards
         });
         Backbone.history.start();

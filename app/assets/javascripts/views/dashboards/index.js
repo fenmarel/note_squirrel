@@ -1,6 +1,5 @@
 NoteSquirrel.Views.DashboardsIndex = Backbone.View.extend({
   initialize: function() {
-    this.collection.fetch();
     this.listenTo(this.collection, "all", this.render);
   },
 

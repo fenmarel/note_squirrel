@@ -5,4 +5,10 @@ class Api::NotebooksController < ApplicationController
 
     render :json => @notebooks
   end
+
+  def show
+    @notebook = Notebook.find(params[:id])
+
+    render :json => @notebook
+  end
 end

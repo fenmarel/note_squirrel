@@ -4,7 +4,7 @@ NoteSquirrel::Application.routes.draw do
 
   namespace :api, :defaults => { :format => :json } do
     resources :dashboards, :except => [:new, :edit] do
-      resources :notebooks, :only => [:new, :create, :index]
+      resources :notebooks, :only => [:create, :index]
     end
 
     resources :notebooks, :except => [:new, :create, :index, :edit] do

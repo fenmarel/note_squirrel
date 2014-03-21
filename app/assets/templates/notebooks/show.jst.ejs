@@ -1,0 +1,3 @@
+<% notes.each(function(note) { %>
+  <li><a href="#<%= note.url() %>"><%= note.escape('title') %></a></li>
+<% }); %>

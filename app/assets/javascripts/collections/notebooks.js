@@ -5,5 +5,7 @@ NoteSquirrel.Collections.Notebooks = Backbone.Collection.extend({
 
   url: function() {
     return this.dashboard.url() + '/notebooks'
-  }
+  },
+
+  model: NoteSquirrel.Models.Notebook
 });

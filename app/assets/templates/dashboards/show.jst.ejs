@@ -1,11 +1,4 @@
-<h2><%= dashboard.get('title') %></h2>
+<% notebooks.each(function(book) { %>
+  <a href="#<%= book.url() %>"><%= book.escape('title') %></a><br>
+<% }); %>
 
-<div id="dashboard-pane">
-  <% notebooks.each(function(book) { %>
-    <a href="#/<%= book.url() %>"><%= book.escape('title') %></a><br>
-  <% }); %>
-</div>
-<div id="notebook-pane">
-
-</div>
-<div id="note-pane"></div>
