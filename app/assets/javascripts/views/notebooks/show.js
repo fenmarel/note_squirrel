@@ -20,6 +20,8 @@ NoteSquirrel.Views.NotebookShow = Backbone.CompositeView.extend({
 
   template: JST['shared/show'],
 
+  el: '<div id="rendered">',
+
   render: function() {
     var content = this.template({ notes: this.notes });
     this.$el.html(content);

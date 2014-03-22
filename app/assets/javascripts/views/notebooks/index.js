@@ -10,7 +10,8 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
   events: {
     "click #new-notebook-toggle": "toggleNotebookForm",
     "click #untoggle-notebook-form": "untoggleNotebookForm",
-    "submit #new-notebook": "createNotebook"
+    "submit #new-notebook": "createNotebook",
+    "click #notebooks-collapse": "toggleCollapseNotebooks"
   },
 
   render: function() {
@@ -25,11 +26,13 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
     var form = JST['notebooks/_form']();
     $(event.target).hide();
     $('#notebook-form-container').html(form);
+    $('#notebook-form-container').show();
   },
 
   untoggleNotebookForm: function(event) {
     event.preventDefault();
     $('#notebook-form-container').empty();
+    $('#notebook-form-container').hide();
     $('#new-notebook-toggle').show();
   },
 
@@ -46,5 +49,12 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
         that.collection.add(newNotebook);
       }
     });
+  },
+
+  toggleCollapseNotebooks: function(event) {
+    var $icon = $(event.target).find('.glyphicon');
+    var $items = $('.notebook-sidebar-item');
+    $icon.toggleClass('glyphicon-chevron-down glyphicon-chevron-right');
+    $items.toggle();
   }
 });

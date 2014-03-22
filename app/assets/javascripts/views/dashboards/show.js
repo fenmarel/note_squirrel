@@ -15,6 +15,8 @@ NoteSquirrel.Views.DashboardShow = Backbone.CompositeView.extend({
 
   template: JST['shared/show'],
 
+  el: '<div id="rendered">',
+
   render: function() {
     var contents = this.template();
     this.$el.html(contents);

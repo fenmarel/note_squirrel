@@ -20,6 +20,8 @@ NoteSquirrel.Views.NoteShow = Backbone.CompositeView.extend({
 
   template: JST['notes/show'],
 
+  el: '<div id="rendered">',
+
   events: {
     "keyup #note-editor": "resetSaveTimeout"
   },

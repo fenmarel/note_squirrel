@@ -1,13 +1,15 @@
-
-<div id="notebook-form-container"></div>
+<div class="list-group-item" id="notebook-form-container"></div>
 
 <a id="new-notebook-toggle" class="list-group-item" href="#">
-  + New Notebook
+  <span class="glyphicon glyphicon-plus"></span> New Notebook
 </a>
 
+<div class="list-group-item sidebar-title" id="notebooks-collapse">
+  <span class="glyphicon glyphicon-chevron-down"></span> Nutbooks
+</div>
 
 <% notebooks.each(function(notebook) { %>
-  <a class="list-group-item" href="#<%= notebook.url() %>">
+  <a class="list-group-item notebook-sidebar-item" href="#<%= notebook.url() %>">
     <%= notebook.escape('title') %>
   </a>
 <% }); %>
