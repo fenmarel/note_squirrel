@@ -1,11 +1,12 @@
 <div id="note-form-container"></div>
 
 <a id="new-note-toggle" class="list-group-item" href="#">
-  + New Note
+  <span class="glyphicon glyphicon-plus"></span> New Note
 </a>
 
 <% notes.each(function(note) { %>
-  <a class="list-group-item" href="#<%= note.url() %>">
-    <%= note.escape('title') %>
+  <a class="list-group-item note-sidebar-item" href="#<%= note.url() %>">
+    <strong><%= note.escape('title') %></strong>
+    <p class="note-preview"><%= note.escape('body').slice(0, 50) %></p>
   </a>
 <% }); %>
