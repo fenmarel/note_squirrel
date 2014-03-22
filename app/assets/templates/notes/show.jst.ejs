@@ -1,8 +1,14 @@
 <div id="dashboard-pane" class="col-md-3"></div>
 <div id="notebook-pane" class="col-md-4"></div>
 <div id="note-pane" class="col-md-5">
+
   <form id="note-editor" accept-charset="utf-8">
-    <textarea name="note[body]" rows="8" cols="40" class="form-control"
-              id="note-text-editor"><%= note.escape('body') %></textarea>
+    <div class="form-group" id="note-edit-group">
+      <input type="text" name="note[title]" value="<%= note.escape('title') %>"
+             class="form-control" id="note-title-editor">
+
+      <textarea name="note[body]" rows="8" cols="40" class="form-control"
+                id="note-text-editor"><%= note.escape('body') %></textarea>
+    </div>
   </form>
 </div>

@@ -36,15 +36,15 @@ NoteSquirrel.Views.NoteShow = Backbone.CompositeView.extend({
 
   resetSaveTimeout: function(event) {
     var that = this;
-    $(event.target).parent().removeClass('has-success');
-    $(event.target).parent().addClass('has-warning');
+    $('#note-edit-group').removeClass('has-success');
+    $('#note-edit-group').addClass('has-warning');
     this._timer && clearTimeout(this._timer);
     this._timer = setTimeout(function() { that.updateBody(event) }, 3000);
   },
 
   updateBody: function(event) {
-    $(event.target).parent().removeClass('has-warning');
-    $(event.target).parent().addClass('has-success');
+    $('#note-edit-group').removeClass('has-warning');
+    $('#note-edit-group').addClass('has-success');
     var data = $(event.target).serializeJSON();
     this.model.save(data, { patch: true });
   }
