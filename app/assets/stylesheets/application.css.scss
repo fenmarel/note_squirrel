@@ -30,6 +30,11 @@ html, body, #content, #rendered {
   border-radius: 0;
 }
 
+.list-group-item {
+  border-width: 1px 0 1px 0;
+  border-radius: 0;
+}
+
 .glyphicon-remove {
   font-size: 1.5em;
   vertical-align: middle;

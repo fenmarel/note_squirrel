@@ -5,3 +5,29 @@
 #notebook-pane {
   border-right: solid 1px #B3B3B3;
 }
+
+
+// Dashboard pane display of notebooks
+
+#notebook-form-container {
+  display: none;
+}
+
+.list-group-item.notebook-sidebar-item {
+  padding: 2px 15px 1px 15px;
+  margin-left: 10px;
+  border: 0;
+
+  &:hover {
+    background: #D1D4D7;
+  }
+}
+
+.form-control.notebook-title, .submit-options {
+  width: auto;
+  display: inline-block;
+}
+
+#notebook-form-container {
+  padding: 4px 15px 3px 15px;
+}

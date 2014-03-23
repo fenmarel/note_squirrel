@@ -1,5 +1,7 @@
 NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
-  initialize: function() {
+  initialize: function(options) {
+    this.dashboard = options.dashboard;
+
     this.listenTo(this.collection, "all", this.render);
   },
 
@@ -15,7 +17,10 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
   },
 
   render: function() {
-    var content = this.template({ notebooks: this.collection });
+    var content = this.template({
+      notebooks: this.collection,
+      dashboard: this.dashboard
+    });
     this.$el.html(content);
 
     return this;
@@ -24,7 +29,7 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
   toggleNotebookForm: function(event) {
     event.preventDefault();
     var form = JST['notebooks/_form']();
-    $(event.target).hide();
+    $('#new-notebook-toggle').hide();
     $('#notebook-form-container').html(form);
     $('#notebook-form-container').show();
   },

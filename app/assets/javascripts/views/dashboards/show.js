@@ -26,7 +26,10 @@ NoteSquirrel.Views.DashboardShow = Backbone.CompositeView.extend({
   },
 
   addNotebooks: function(notebooks) {
-    var view = new NoteSquirrel.Views.NotebooksIndex({ collection: notebooks });
+    var view = new NoteSquirrel.Views.NotebooksIndex({
+      collection: notebooks,
+      dashboard: this.model
+    });
     this.addSubview('#dashboard-pane', view);
     view.render();
   }

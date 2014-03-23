@@ -5,11 +5,12 @@
 </a>
 
 <div class="list-group-item sidebar-title" id="notebooks-collapse">
-  <span class="glyphicon glyphicon-chevron-down"></span> Nutbooks
+  <span class="glyphicon glyphicon-chevron-down"></span> Workspace: <%= dashboard.escape('title') %>
 </div>
 
 <% notebooks.each(function(notebook) { %>
   <a class="list-group-item notebook-sidebar-item" href="#<%= notebook.url() %>">
+    <span class="glyphicon glyphicon-book"></span>
     <%= notebook.escape('title') %>
   </a>
 <% }); %>

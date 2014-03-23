@@ -8,7 +8,10 @@ NoteSquirrel.Views.NotebookShow = Backbone.CompositeView.extend({
 
     this.collection.fetch({
       success: function(notebooks) {
-        var dashPane = new NoteSquirrel.Views.NotebooksIndex({ collection: notebooks });
+        var dashPane = new NoteSquirrel.Views.NotebooksIndex({
+          collection: notebooks,
+          dashboard: that.dashboard
+        });
         that.addSubview('#dashboard-pane', dashPane);
 
         var notebookPane = new NoteSquirrel.Views.NotesIndex({ collection: that.notes });
