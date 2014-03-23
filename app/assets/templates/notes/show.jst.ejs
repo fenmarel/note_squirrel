@@ -5,9 +5,9 @@
   <form id="note-editor" accept-charset="utf-8">
     <div class="form-group" id="note-edit-group">
       <input type="text" name="note[title]" value="<%= note.escape('title') %>"
-             class="form-control" id="note-title-editor">
+             class="" id="note-title-editor">
 
-      <textarea name="note[body]" rows="8" cols="40" class="form-control"
+      <textarea name="note[body]" rows="8" cols="40" class=""
                 id="note-text-editor"><%= note.escape('body') %></textarea>
     </div>
   </form>

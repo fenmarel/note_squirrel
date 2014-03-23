@@ -23,14 +23,21 @@
 #note-title-editor, #note-text-editor {
   box-shadow: none;
   outline: none;
+  width: 100%;
+  border-color: #B3B3B3;
+  border-width: 1px;
+  border-style: solid;
 }
 
 #note-title-editor {
-  border-bottom: none;
+  border-bottom: solid 1px #E4E4E4;
   border-radius: 4px 4px 0 0;
+  padding: 0.3em 0.67em 0.3em 0.67em;
+  font-size: 1.5em;
 }
 
 #note-text-editor {
   border-top: none;
   border-radius: 0 0 4px 4px;
+  padding: 0.3em 1em 0.3em 1em;
 }
