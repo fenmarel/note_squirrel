@@ -52,7 +52,7 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
   },
 
   toggleCollapseNotebooks: function(event) {
-    var $icon = $(event.target).find('.glyphicon');
+    var $icon = $('#notebooks-collapse').find('.glyphicon');
     var $items = $('.notebook-sidebar-item');
     $icon.toggleClass('glyphicon-chevron-down glyphicon-chevron-right');
     $items.toggle();
