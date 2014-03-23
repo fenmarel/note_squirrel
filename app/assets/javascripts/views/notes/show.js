@@ -2,6 +2,7 @@ NoteSquirrel.Views.NoteShow = Backbone.CompositeView.extend({
   initialize: function(options) {
     var that = this;
     this.notebook = new NoteSquirrel.Models.Notebook({ id: this.model.get('notebook_id') });
+    this._events = _.extend({}, Backbone.Events);
 
     this.notebook.fetch({
       success: function(data) {
@@ -12,7 +13,10 @@ NoteSquirrel.Views.NoteShow = Backbone.CompositeView.extend({
         var dashPane = new NoteSquirrel.Views.NotebooksIndex({ collection: that.notebooks });
         that.addSubview('#dashboard-pane', dashPane);
 
-        var notebookPane = new NoteSquirrel.Views.NotesIndex({ collection: that.notes });
+        var notebookPane = new NoteSquirrel.Views.NotesIndex({
+          collection: that.notes,
+          _events: that._events
+        });
         that.addSubview('#notebook-pane', notebookPane);
       }
     });
@@ -43,9 +47,13 @@ NoteSquirrel.Views.NoteShow = Backbone.CompositeView.extend({
   },
 
   updateBody: function(event) {
-    $('#note-edit-group').removeClass('has-warning');
-    $('#note-edit-group').addClass('has-success');
+    var that = this;
     var data = $(event.target).serializeJSON();
-    this.model.save(data, { patch: true });
+    this.model.save(data, {
+      patch: true,
+      success: function(data) {
+        that._events.trigger("editNote", that.model);
+      }
+    });
   }
 });

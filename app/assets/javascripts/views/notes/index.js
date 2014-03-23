@@ -1,6 +1,15 @@
-NoteSquirrel.Views.NotesIndex = Backbone.View.extend({
-  initialize: function() {
+NoteSquirrel.Views.NotesIndex = Backbone.CompositeView.extend({
+  initialize: function(options) {
+    this._events = options._events;
+
     this.listenTo(this.collection, "all", this.render);
+
+    var that = this;
+    this.collection.fetch({
+      success: function(notes) {
+        notes.each(that.addNote.bind(that));
+      }
+    });
   },
 
   template: JST['notes/index'],
@@ -16,6 +25,7 @@ NoteSquirrel.Views.NotesIndex = Backbone.View.extend({
   render: function() {
     var content = this.template({ notes: this.collection });
     this.$el.html(content);
+    this.renderSubviews();
 
     return this;
   },
@@ -46,5 +56,14 @@ NoteSquirrel.Views.NotesIndex = Backbone.View.extend({
         that.collection.add(newNotebook);
       }
     });
+  },
+
+  addNote: function(note) {
+    var view = new NoteSquirrel.Views.NoteListShow({
+      model: note,
+      _events: this._events
+    });
+    this.addSubview('#notes-container', view);
+    view.render();
   }
 });
