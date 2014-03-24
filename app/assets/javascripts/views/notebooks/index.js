@@ -25,7 +25,7 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
     this.$el.html(content);
 
     if (this.active) {
-      $('.notebook-sidebar-item[href$="'+this.active.id+'"]').addClass('active-path');
+      $('.notebook-sidebar-item[href$="/'+this.active.id+'"]').addClass('active-path');
     }
 
     return this;

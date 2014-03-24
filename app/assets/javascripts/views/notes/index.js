@@ -29,7 +29,7 @@ NoteSquirrel.Views.NotesIndex = Backbone.CompositeView.extend({
     this.renderSubviews();
 
     if (this.active) {
-      $('.note-sidebar-item[href$="'+this.active.id+'"]').addClass('active-path');
+      $('.note-sidebar-item[href$="/'+this.active.id+'"]').addClass('active-path');
     }
 
     return this;
