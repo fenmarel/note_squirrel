@@ -23,3 +23,22 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+
+
+$(function() {
+  $('#new-dashboard').on('click', function(event) {
+    event.preventDefault();
+
+    var newDash = new NoteSquirrel.Models.Dashboard({ title: "New Dashboard" });
+    newDash.save({}, {
+      success: function() {
+        NoteSquirrel.dashboards.add(newDash);
+      }
+    });
+  });
+
+  $(window).on('resize', function(event) {
+    $('#notebooks-container').height($(window).height() - 132);
+    $('#notes-container').height($(window).height() - 91);
+  })
+})

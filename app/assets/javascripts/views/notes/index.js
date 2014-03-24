@@ -32,6 +32,8 @@ NoteSquirrel.Views.NotesIndex = Backbone.CompositeView.extend({
       $('.note-sidebar-item[href$="/'+this.active.id+'"]').addClass('active-path');
     }
 
+    $('#notes-container').height($(window).height() - 91);
+
     return this;
   },
 

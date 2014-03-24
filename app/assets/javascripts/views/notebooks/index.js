@@ -31,6 +31,8 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
       $('.notebook-sidebar-item[href$="/'+this.active.id+'"]').addClass('active-path');
     }
 
+    $('#notebooks-container').height($(window).height() - 132);
+
     return this;
   },
 

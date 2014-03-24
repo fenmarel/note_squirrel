@@ -7,17 +7,6 @@ window.NoteSquirrel = {
     NoteSquirrel.dashboards = new NoteSquirrel.Collections.Dashboards(
       JSON.parse($("#initial-data").html()).dashboards);
 
-    $('#new-dashboard').on('click', function(event) {
-      event.preventDefault();
-
-      var newDash = new NoteSquirrel.Models.Dashboard({ title: "New Dashboard" });
-      newDash.save({}, {
-        success: function() {
-          NoteSquirrel.dashboards.add(newDash);
-        }
-      });
-    });
-
     new NoteSquirrel.Routers.SquirrelRouter({
       dashboards: NoteSquirrel.dashboards,
       $rootEl: $('#content')
