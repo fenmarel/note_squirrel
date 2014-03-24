@@ -34,12 +34,14 @@ NoteSquirrel.Views.NotesIndex = Backbone.CompositeView.extend({
     event.preventDefault();
     var form = JST['notes/_form']();
     $('#new-note-toggle').hide();
+    $('#note-form-container').show();
     $('#note-form-container').html(form);
   },
 
   untoggleNoteForm: function(event) {
     event.preventDefault();
     $('#note-form-container').empty();
+    $('#note-form-container').hide();
     $('#new-note-toggle').show();
   },
 

@@ -16,9 +16,17 @@
   background: #F3F5F7;
 }
 
+#note-form-container {
+  display: none;
+}
+
 #note-show-bar {
   height: 41px;
   width: 100%;
+}
+
+#new-note {
+  padding: 0;
 }
 
 #note-editor, #note-edit-group, #note-text-editor {

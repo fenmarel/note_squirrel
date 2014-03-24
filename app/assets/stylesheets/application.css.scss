@@ -22,16 +22,27 @@ html, body, #content, #rendered {
 #dashboard-pane, #notebook-pane, #note-pane {
   padding: 50px 0 25px 0;
   height: 100%;
-  overflow-y: auto;
 }
 
 #new-notebook-toggle,
 #new-note-toggle,
 #notebook-form-container,
-#note-form-container li,
+#note-form-container,
 #note-show-bar {
   background: green;
   color: white;
+}
+
+.form-control.notebook-title,
+.form-control.note-title,
+.submit-options {
+  width: auto;
+  display: inline-block;
+}
+
+#notebook-form-container,
+#note-form-container {
+  padding: 2px 15px 5px 15px;
 }
 
 .sidebar-title {
