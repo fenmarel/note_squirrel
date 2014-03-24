@@ -33,7 +33,7 @@ NoteSquirrel.Views.NotesIndex = Backbone.CompositeView.extend({
   toggleNoteForm: function(event) {
     event.preventDefault();
     var form = JST['notes/_form']();
-    $(event.target).hide();
+    $('#new-note-toggle').hide();
     $('#note-form-container').html(form);
   },
 
@@ -52,8 +52,10 @@ NoteSquirrel.Views.NotesIndex = Backbone.CompositeView.extend({
       url: this.collection.url(),
       type: 'POST',
       data: data,
-      success: function(newNotebook) {
-        that.collection.add(newNotebook);
+      success: function(newNote) {
+        var note = new NoteSquirrel.Models.Note(newNote);
+        that.addNote.call(that, note);
+        that.collection.add(note);
       }
     });
   },

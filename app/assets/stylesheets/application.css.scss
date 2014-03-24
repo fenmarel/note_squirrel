@@ -22,6 +22,16 @@ html, body, #content, #rendered {
 #dashboard-pane, #notebook-pane, #note-pane {
   padding: 50px 0 25px 0;
   height: 100%;
+  overflow-y: auto;
+}
+
+#new-notebook-toggle,
+#new-note-toggle,
+#notebook-form-container,
+#note-form-container li,
+#note-show-bar {
+  background: green;
+  color: white;
 }
 
 .sidebar-title {

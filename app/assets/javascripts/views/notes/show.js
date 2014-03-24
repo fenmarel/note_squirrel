@@ -30,7 +30,8 @@ NoteSquirrel.Views.NoteShow = Backbone.CompositeView.extend({
   el: '<div id="rendered">',
 
   events: {
-    "keyup #note-editor": "resetSaveTimeout"
+    "keyup #note-editor": "resetSaveTimeout",
+    "submit note-editor": "preventDefault"
   },
 
   render: function() {
@@ -58,5 +59,9 @@ NoteSquirrel.Views.NoteShow = Backbone.CompositeView.extend({
         that._events.trigger("editNote", that.model);
       }
     });
+  },
+
+  preventDefault: function(event) {
+    event.preventDefault();
   }
 });

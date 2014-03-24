@@ -12,8 +12,13 @@
 }
 
 #note-pane {
-  padding: 50px 1em 2em 1em;
+  padding: 50px 0 2em 0;
   background: #F3F5F7;
+}
+
+#note-show-bar {
+  height: 41px;
+  width: 100%;
 }
 
 #note-editor, #note-edit-group, #note-text-editor {
