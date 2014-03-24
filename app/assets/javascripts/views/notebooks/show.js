@@ -22,7 +22,7 @@ NoteSquirrel.Views.NotebookShow = Backbone.CompositeView.extend({
     });
   },
 
-  template: JST['shared/show'],
+  template: JST['notebooks/show'],
 
   el: '<div id="rendered">',
 

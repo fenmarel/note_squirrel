@@ -12,7 +12,7 @@ NoteSquirrel.Views.DashboardShow = Backbone.CompositeView.extend({
     });
   },
 
-  template: JST['shared/show'],
+  template: JST['dashboards/show'],
 
   el: '<div id="rendered">',
 
