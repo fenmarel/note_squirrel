@@ -7,5 +7,7 @@ NoteSquirrel.Collections.Notebooks = Backbone.Collection.extend({
     return this.dashboard.url() + '/notebooks'
   },
 
-  model: NoteSquirrel.Models.Notebook
+  model: NoteSquirrel.Models.Notebook,
+
+  comparator: "created_at"
 });
