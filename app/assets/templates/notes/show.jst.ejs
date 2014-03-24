@@ -2,9 +2,9 @@
 <div id="notebook-pane" class="col-md-4"></div>
 <div id="note-pane" class="col-md-5">
   <div id="note-show-bar">
-
+    <p class="saved"><span class="glyphicon glyphicon-floppy-saved"></span> Saved</p>
   </div>
-  <form id="note-editor" accept-charset="utf-8">
+  <form id="note-editor" class="container-fluid" accept-charset="utf-8">
     <div class="form-group" id="note-edit-group">
       <input type="text" name="note[title]" value="<%= note.escape('title') %>"
              class="" id="note-title-editor">

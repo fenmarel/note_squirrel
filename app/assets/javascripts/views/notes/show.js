@@ -46,8 +46,9 @@ NoteSquirrel.Views.NoteShow = Backbone.CompositeView.extend({
     var that = this;
     $('#note-edit-group').removeClass('has-success');
     $('#note-edit-group').addClass('has-warning');
+    $('.saved').hide();
     this._timer && clearTimeout(this._timer);
-    this._timer = setTimeout(function() { that.updateBody(event) }, 3000);
+    this._timer = setTimeout(function() { that.updateBody(event) }, 2000);
   },
 
   updateBody: function(event) {
@@ -56,6 +57,7 @@ NoteSquirrel.Views.NoteShow = Backbone.CompositeView.extend({
     this.model.save(data, {
       patch: true,
       success: function(data) {
+        $('.saved').show();
         that._events.trigger("editNote", that.model);
       }
     });

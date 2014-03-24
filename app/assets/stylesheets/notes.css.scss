@@ -29,6 +29,10 @@
   padding: 0;
 }
 
+#note-editor {
+  padding-top: 1em;
+}
+
 #note-editor, #note-edit-group, #note-text-editor {
   height: 90%;
 }
@@ -53,4 +57,12 @@
   border-top: none;
   border-radius: 0 0 4px 4px;
   padding: 0.3em 1em 0.3em 1em;
+}
+
+.glyphicon-floppy-saved {
+  font-size: 1.5em;
+}
+
+.saved {
+  padding: 0.6em 1em 0.4em 1em;
 }
