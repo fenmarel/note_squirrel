@@ -5,6 +5,10 @@
 
 .note-sidebar-item {
   height: 6em;
+
+  &.active-path {
+    background: #ECF0F3;
+  }
 }
 
 .note-preview {

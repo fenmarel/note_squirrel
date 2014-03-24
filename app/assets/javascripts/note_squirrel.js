@@ -4,17 +4,21 @@ window.NoteSquirrel = {
   Views: {},
   Routers: {},
   initialize: function() {
-    NoteSquirrel.dashboards = new NoteSquirrel.Collections.Dashboards();
+    NoteSquirrel.dashboards = new NoteSquirrel.Collections.Dashboards(
+      JSON.parse($("#initial-data").html()).dashboards);
 
-    NoteSquirrel.dashboards.fetch({
-      success: function() {
-        new NoteSquirrel.Routers.SquirrelRouter({
-          dashboards: NoteSquirrel.dashboards,
-          $rootEl: $('#content')
-        });
-        Backbone.history.start();
-      }
+    // NoteSquirrel.notebooks = new NoteSquirrel.Collections.Notebooks(
+    //   JSON.parse($("#initial-data").html()).notebooks);
+    //
+    // NoteSquirrel.notes = new NoteSquirrel.Collections.Notes(
+    //   JSON.parse($("#initial-data").html()).notes);
+
+    new NoteSquirrel.Routers.SquirrelRouter({
+      dashboards: NoteSquirrel.dashboards,
+      $rootEl: $('#content')
     });
+
+    Backbone.history.start();
   }
 };
 

@@ -12,13 +12,15 @@ NoteSquirrel.Views.NoteShow = Backbone.CompositeView.extend({
 
         var dashPane = new NoteSquirrel.Views.NotebooksIndex({
           collection: that.notebooks,
-          dashboard: that.dashboard
+          dashboard: that.dashboard,
+          active: that.notebook
         });
         that.addSubview('#dashboard-pane', dashPane);
 
         var notebookPane = new NoteSquirrel.Views.NotesIndex({
           collection: that.notes,
-          _events: that._events
+          _events: that._events,
+          active: that.model
         });
         that.addSubview('#notebook-pane', notebookPane);
       }

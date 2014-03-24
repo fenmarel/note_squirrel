@@ -1,6 +1,7 @@
 NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
   initialize: function(options) {
     this.dashboard = options.dashboard;
+    this.active = options.active;
 
     this.listenTo(this.collection, "all", this.render);
   },
@@ -22,6 +23,10 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
       dashboard: this.dashboard
     });
     this.$el.html(content);
+
+    if (this.active) {
+      $('.notebook-sidebar-item[href$="'+this.active.id+'"]').addClass('active-path');
+    }
 
     return this;
   },

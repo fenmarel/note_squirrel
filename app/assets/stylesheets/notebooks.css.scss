@@ -16,11 +16,13 @@
 .list-group-item.notebook-sidebar-item {
   background: #EAEDEF;
   padding: 2px 15px 1px 15px;
-  margin-left: 10px;
   border: 0;
 
   &:hover {
     background: #D1D4D7;
   }
-}
 
+  &.active-path {
+    background: #c2c9ce;
+  }
+}

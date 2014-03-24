@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :dashboards
+  has_many :notebooks, :through => :dashboards
+  has_many :notes, :through => :notebooks
 end
