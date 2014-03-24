@@ -19,8 +19,16 @@
             <a href="#" id="nav-dashboard-dropdown" class="dropdown-toggle" data-toggle="dropdown">Workspaces <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <% current_user.dashboards.each do |dashboard| %>
-                <li><%= link_to dashboard.title, "##{api_dashboard_path(dashboard)}" %></li>
+                <li>
+                  <%= link_to dashboard.title,
+                      "##{api_dashboard_path(dashboard)}" %>
+                </li>
                 <% end %>
+
+                <li class="divider"></li>
+                <li>
+                  <a href="#" id="new-dashboard">+ New Workspace</a>
+                </li>
               </ul>
           </li>
         </ul>

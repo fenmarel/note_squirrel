@@ -1,4 +1,4 @@
-NoteSquirrel.Routers.SquirrelRouterBACKUP = Backbone.Router.extend({
+NoteSquirrel.Routers.SquirrelRouter = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
     this.dashboards = options.dashboards;
@@ -17,8 +17,22 @@ NoteSquirrel.Routers.SquirrelRouterBACKUP = Backbone.Router.extend({
   },
 
   dashboardShow: function(id) {
-    var view = new NoteSquirrel.Views.DashboardShow({ model: this.dashboards.get(id) });
-    this._swapView(view);
+    var dash = this.dashboards.get(id);
+    var defaultNotebooks = dash.notebooks();
+    var that = this;
+
+    defaultNotebooks.fetch({
+      success: function(data) {
+        var notebook = data.at(0);
+        if (notebook) {
+          that.notebookShow(notebook.id);
+        } else {
+          var view = new NoteSquirrel.Views.DashboardShow({ model: that.dashboards.get(id) });
+          that._swapView(view);
+        }
+      }
+    });
+
   },
 
   notebookShow: function(id) {
@@ -27,8 +41,18 @@ NoteSquirrel.Routers.SquirrelRouterBACKUP = Backbone.Router.extend({
 
     notebook.fetch({
       success: function() {
-        var view = new NoteSquirrel.Views.NotebookShow({ model: notebook });
-        that._swapView(view);
+        var defaultNotes = notebook.notes();
+        defaultNotes.fetch({
+          success: function(data) {
+            var note = data.at(0);
+            if (note) {
+              that.noteShow(note.id);
+            } else {
+              var view = new NoteSquirrel.Views.NotebookShow({ model: notebook });
+              that._swapView(view);
+            }
+          }
+        });
       }
     });
   },

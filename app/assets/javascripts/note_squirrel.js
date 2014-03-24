@@ -13,6 +13,17 @@ window.NoteSquirrel = {
     // NoteSquirrel.notes = new NoteSquirrel.Collections.Notes(
     //   JSON.parse($("#initial-data").html()).notes);
 
+    $('#new-dashboard').on('click', function(event) {
+      event.preventDefault();
+
+      var newDash = new NoteSquirrel.Models.Dashboard({ title: "New Dashboard" });
+      newDash.save({}, {
+        success: function() {
+          NoteSquirrel.dashboards.add(newDash);
+        }
+      });
+    });
+
     new NoteSquirrel.Routers.SquirrelRouter({
       dashboards: NoteSquirrel.dashboards,
       $rootEl: $('#content')
