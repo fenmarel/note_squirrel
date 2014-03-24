@@ -4,10 +4,6 @@
 
 <% if user_signed_in? %>
   <script type="application/json" charset="utf-8" id="initial-data">
-    {
-      "dashboards": <%= @dashboards.to_json.html_safe %>,
-      "notebooks": <%= @notebooks.to_json.html_safe %>,
-      "notes": <%= @notes.to_json.html_safe %>
-    }
+    { "dashboards": <%= @dashboards.to_json.html_safe %> }
   </script>
 <% end %>

@@ -7,12 +7,6 @@ window.NoteSquirrel = {
     NoteSquirrel.dashboards = new NoteSquirrel.Collections.Dashboards(
       JSON.parse($("#initial-data").html()).dashboards);
 
-    // NoteSquirrel.notebooks = new NoteSquirrel.Collections.Notebooks(
-    //   JSON.parse($("#initial-data").html()).notebooks);
-    //
-    // NoteSquirrel.notes = new NoteSquirrel.Collections.Notes(
-    //   JSON.parse($("#initial-data").html()).notes);
-
     $('#new-dashboard').on('click', function(event) {
       event.preventDefault();
 

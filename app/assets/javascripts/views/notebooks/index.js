@@ -14,7 +14,10 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
     "click #new-notebook-toggle": "toggleNotebookForm",
     "click #untoggle-notebook-form": "untoggleNotebookForm",
     "submit #new-notebook": "createNotebook",
-    "click #notebooks-collapse": "toggleCollapseNotebooks"
+    "click .glyphicon-chevron-down, .glyphicon-chevron-right": "toggleCollapseNotebooks",
+    "click .edit-dashboard-name": "toggleDashboardRename",
+    "click #untoggle-dashboard-form": "toggleDashboardRename",
+    "submit #rename-dashboard": "renameDashboard"
   },
 
   render: function() {
@@ -62,9 +65,31 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
   },
 
   toggleCollapseNotebooks: function(event) {
-    var $icon = $('#notebooks-collapse').find('.glyphicon');
+    var $icon = $('#notebooks-collapse [class^="glyphicon glyphicon-chevron-"]');
     var $items = $('.notebook-sidebar-item');
     $icon.toggleClass('glyphicon-chevron-down glyphicon-chevron-right');
     $items.toggle();
+  },
+
+  toggleDashboardRename: function(event) {
+    event.preventDefault();
+    $('#notebooks-collapse').toggle();
+    $('#sidebar-notebook-workspace-name-form').toggle();
+
+  },
+
+  renameDashboard: function(event) {
+    event.preventDefault();
+    var data = $(event.target).serializeJSON();
+    var that = this;
+
+    this.dashboard.save(data, {
+      patch: true,
+      success: function() {
+        that.toggleDashboardRename(event);
+        that.render();
+      }
+    });
   }
+
 });
