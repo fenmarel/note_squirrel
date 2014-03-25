@@ -1,9 +1,16 @@
-NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
+NoteSquirrel.Views.NotebooksIndex = Backbone.CompositeView.extend({
   initialize: function(options) {
     this.dashboard = options.dashboard;
     this.active = options.active;
 
     this.listenTo(this.collection, "all", this.render);
+
+    var that = this;
+    this.collection.fetch({
+      success: function(notebooks) {
+        notebooks.each(that.addNotebook.bind(that));
+      }
+    })
   },
 
   template: JST['notebooks/index'],
@@ -26,6 +33,7 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
       dashboard: this.dashboard
     });
     this.$el.html(content);
+    this.renderSubviews();
 
     if (this.active) {
       $('.notebook-sidebar-item[href$="/'+this.active.id+'"]').addClass('active-path');
@@ -34,6 +42,12 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
     $('#notebooks-container').height($(window).height() - 132);
 
     return this;
+  },
+
+  addNotebook: function(notebook) {
+    var view = new NoteSquirrel.Views.NotebookListShow({ model: notebook });
+    this.addSubview('#notebooks-container', view);
+    view.render();
   },
 
   toggleNotebookForm: function(event) {
@@ -61,7 +75,9 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.View.extend({
       type: 'POST',
       data: data,
       success: function(newNotebook) {
-        that.collection.add(newNotebook);
+        var notebook = new NoteSquirrel.Models.Notebook(newNotebook);
+        that.collection.add(notebook);
+        that.addNotebook.call(that, notebook);
       }
     });
   },
