@@ -1,0 +1,26 @@
+<div class="modal fade" id="editModal<%= notebook.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">
+          Rename <%= notebook.escape('title') %>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <form id="notebook-title-form">
+          <input type="text" name="notebook[title]" class="form-control"
+                 value="<%= notebook.escape('title') %>" id="some_name">
+
+          <div class="submit-options">
+            <input type="submit" value="Update Title"
+                   class="btn btn-success">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

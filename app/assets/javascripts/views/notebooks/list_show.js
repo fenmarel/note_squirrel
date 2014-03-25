@@ -1,6 +1,10 @@
 NoteSquirrel.Views.NotebookListShow = Backbone.View.extend({
   initialize: function(options) {
     this.listenTo(this.model, "all", this.render);
+
+    $('#modal-content').on('submit',
+                           '#editModal'+ this.model.id + ' #notebook-title-form',
+                           this.updateNotebookTitle.bind(this));
   },
 
   template: JST['notebooks/list_show'],
@@ -35,5 +39,21 @@ NoteSquirrel.Views.NotebookListShow = Backbone.View.extend({
   toggleEditNotebook: function(event) {
     event.preventDefault();
 
+    var modalView = JST['notebooks/_modal']({ notebook: this.model });
+    $('#modal-content').empty();
+    $('#modal-content').html(modalView);
+    $('#modal-content').find('#editModal' + this.model.id).modal('show');
+  },
+
+  updateNotebookTitle: function(event) {
+    event.preventDefault();
+    var data = $(event.target).serializeJSON();
+    $('#modal-content').find('#editModal' + this.model.id).modal('hide');
+    var that = this;
+    this.model.save(data, {
+      success: function() {
+
+      }
+    })
   }
 })

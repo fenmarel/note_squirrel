@@ -1,6 +1,6 @@
 class Api::NotebooksController < ApplicationController
   def create
-    @notebook = Notebook.new(notebook_params)
+    @notebook = Notebook.new(new_notebook_params)
 
     if @notebook.save
       render :json => @notebook
@@ -22,11 +22,25 @@ class Api::NotebooksController < ApplicationController
     render :json => @notebook
   end
 
+  def update
+    @notebook = Notebook.find(params[:id])
+
+    if @notebook.update(update_notebook_params)
+      render :json => @notebook
+    else
+      render :json => @notebook.errors, status: 422
+    end
+  end
+
 
   private
 
-  def notebook_params
+  def new_notebook_params
     dash_id = { dashboard_id: params[:dashboard_id] }
     params.require(:notebook).permit(:title).merge(dash_id)
+  end
+
+  def update_notebook_params
+    params.require(:notebook).permit(:title)
   end
 end

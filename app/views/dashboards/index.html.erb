@@ -2,6 +2,10 @@
 
 </div>
 
+<div id="modal-content">
+
+</div>
+
 <% if user_signed_in? %>
   <script type="application/json" charset="utf-8" id="initial-data">
     { "dashboards": <%= @dashboards.to_json.html_safe %> }
