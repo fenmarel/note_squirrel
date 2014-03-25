@@ -9,6 +9,13 @@ class Api::NotebooksController < ApplicationController
     end
   end
 
+  def destroy
+    @notebook = Notebook.find(params[:id])
+    @notebook.destroy
+
+    render :json => @notebook
+  end
+
   def index
     @dashboard = Dashboard.find(params[:dashboard_id])
     @notebooks = @dashboard.notebooks

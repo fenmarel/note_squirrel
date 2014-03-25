@@ -16,7 +16,8 @@ NoteSquirrel.Views.NotebookListShow = Backbone.View.extend({
   events: {
     "mouseenter": "showOptions",
     "mouseleave": "hideOptions",
-    "click .edit-notebook": "toggleEditNotebook"
+    "click .edit-notebook": "toggleEditNotebook",
+    "click .remove-notebook": "deleteNotebook"
   },
 
   render: function() {
@@ -50,10 +51,16 @@ NoteSquirrel.Views.NotebookListShow = Backbone.View.extend({
     var data = $(event.target).serializeJSON();
     $('#modal-content').find('#editModal' + this.model.id).modal('hide');
     var that = this;
-    this.model.save(data, {
-      success: function() {
+    this.model.save(data);
+  },
 
-      }
-    })
+  deleteNotebook: function(event) {
+    event.preventDefault();
+    // TODO: make this not ugly
+    var confirmation = confirm("Are you sure you want to delete " + this.model.escape('title') + "?");
+    if (confirmation) {
+      this.model.destroy();
+      this.remove();
+    }
   }
 })
