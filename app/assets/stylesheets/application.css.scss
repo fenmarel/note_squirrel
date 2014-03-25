@@ -19,6 +19,11 @@ html, body, #content, #rendered {
   overflow: hidden;
 }
 
+.favicon {
+  margin-top: -15px;
+  padding-right: 3px;
+}
+
 #dashboard-pane, #notebook-pane, #note-pane {
   padding: 50px 0 25px 0;
   height: 100%;
