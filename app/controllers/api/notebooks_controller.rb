@@ -38,6 +38,8 @@ class Api::NotebooksController < ApplicationController
   end
 
   def update
+    render :text => "GAH"
+    return
     @notebook = Notebook.find(params[:id])
 
     if @notebook.update(update_notebook_params)
