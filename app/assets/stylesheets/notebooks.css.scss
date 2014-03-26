@@ -13,7 +13,8 @@
   display: none;
 }
 
-.list-group-item.notebook-sidebar-item {
+.list-group-item.notebook-sidebar-item,
+.list-group-item.favorite-sidebar-item {
   background: #EAEDEF;
   padding: 2px 15px 1px 15px;
   border: 0;

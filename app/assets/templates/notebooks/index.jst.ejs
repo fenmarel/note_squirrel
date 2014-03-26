@@ -10,10 +10,14 @@
 
 <div class="quicklink-container">
   <% favorites.each(function(fav) { %>
-    <a class="list-group-item notebook-sidebar-item" href="#<%= fav.url() %>">
-    <span class="glyphicon glyphicon-book"></span>
+    <a class="list-group-item favorite-sidebar-item" href="#<%= fav.url() %>">
+    <span class="glyphicon glyphicon-share-alt"></span>
     <span class="notebook-list-title" data-id="<%= fav.id %>">
       <%= fav.escape('title') %>
+    </span>
+    <span class="options pull-right hide-options">
+      <span class="glyphicon glyphicon-minus remove-favorite"
+            data-id="<%= fav.id %>"></span>
     </span>
     </a>
   <% }); %>
