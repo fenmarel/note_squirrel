@@ -7,6 +7,12 @@ window.NoteSquirrel = {
     NoteSquirrel.dashboards = new NoteSquirrel.Collections.Dashboards(
       JSON.parse($("#initial-data").html()).dashboards);
 
+    NoteSquirrel.favorites = new NoteSquirrel.Collections.Favorites(
+      JSON.parse($("#initial-data").html()).favorites);
+
+    // NoteSquirrel.trashcan = new NoteSquirrel.Collections.Trashcan(
+    //   JSON.parse($("#initial-data").html()).trashcan);
+
     new NoteSquirrel.Routers.SquirrelRouter({
       dashboards: NoteSquirrel.dashboards,
       $rootEl: $('#content')

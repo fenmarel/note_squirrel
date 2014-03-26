@@ -5,6 +5,23 @@
 </a>
 
 <div class="list-group-item sidebar-title" id="notebooks-collapse">
+  <span class="glyphicon glyphicon-chevron-down"></span> Quicklinks
+</div>
+
+<div class="quicklink-container">
+  <% favorites.each(function(fav) { %>
+    <a class="list-group-item notebook-sidebar-item" href="#<%= fav.url() %>">
+    <span class="glyphicon glyphicon-book"></span>
+    <span class="notebook-list-title" data-id="<%= fav.id %>">
+      <%= fav.escape('title') %>
+    </span>
+    </a>
+  <% }); %>
+</div>
+
+
+
+<div class="list-group-item sidebar-title" id="notebooks-collapse">
   <span class="glyphicon glyphicon-chevron-down"></span> Workspace: <%= dashboard.escape('title') %>
   <span class="glyphicon glyphicon-pencil edit-dashboard-name pull-right"></span>
 </div>

@@ -16,6 +16,14 @@ class Api::NotebooksController < ApplicationController
     render :json => @notebook
   end
 
+  def favorites
+    if user_signed_in?
+      render :json => current_user.favorites
+    else
+      render :json => []
+    end
+  end
+
   def index
     @dashboard = Dashboard.find(params[:dashboard_id])
     @notebooks = @dashboard.notebooks
@@ -48,6 +56,6 @@ class Api::NotebooksController < ApplicationController
   end
 
   def update_notebook_params
-    params.require(:notebook).permit(:title)
+    params.require(:notebook).permit(:title, :favorite)
   end
 end

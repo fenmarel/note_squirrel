@@ -4,8 +4,8 @@ class DashboardsController < ApplicationController
   def index
     if user_signed_in?
       @dashboards = current_user.dashboards
-      @notebooks = current_user.notebooks
-      @notes = current_user.notes
+      @favorites = current_user.favorites
+      @trashcan = current_user.to_delete
     end
 
     render :index

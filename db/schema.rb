@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320205646) do
+ActiveRecord::Schema.define(version: 20140326170936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,14 +27,18 @@ ActiveRecord::Schema.define(version: 20140320205646) do
   add_index "dashboards", ["user_id"], name: "index_dashboards_on_user_id", using: :btree
 
   create_table "notebooks", force: true do |t|
-    t.string   "title",        null: false
+    t.string   "title",                        null: false
     t.integer  "dashboard_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "favorite",     default: false
+    t.boolean  "trashcan",     default: false
   end
 
   add_index "notebooks", ["dashboard_id", "title"], name: "index_notebooks_on_dashboard_id_and_title", unique: true, using: :btree
   add_index "notebooks", ["dashboard_id"], name: "index_notebooks_on_dashboard_id", using: :btree
+  add_index "notebooks", ["favorite"], name: "index_notebooks_on_favorite", using: :btree
+  add_index "notebooks", ["trashcan"], name: "index_notebooks_on_trashcan", using: :btree
 
   create_table "notes", force: true do |t|
     t.string   "title",       default: "Untitled", null: false

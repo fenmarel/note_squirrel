@@ -1,6 +1,8 @@
 
 <span class="glyphicon glyphicon-book"></span>
-<%= notebook.escape('title') %>
+<span class="notebook-list-title" data-id="<%= notebook.id %>">
+  <%= notebook.escape('title') %>
+</span>
 
 <span class="options pull-right hide-options">
   <span class="glyphicon glyphicon-pencil edit-notebook"></span>

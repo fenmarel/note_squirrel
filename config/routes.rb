@@ -10,5 +10,8 @@ NoteSquirrel::Application.routes.draw do
     resources :notebooks, :except => [:new, :create, :index, :edit] do
       resources :notes, :shallow => true, :except => [:new, :edit]
     end
+
+    match "favorites", :to => "notebooks#favorites", :via => :get
+    match "trashcan", :to => "notebooks#trashcan", :via => :get
   end
 end

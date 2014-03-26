@@ -7,4 +7,14 @@ class User < ActiveRecord::Base
   has_many :dashboards
   has_many :notebooks, :through => :dashboards
   has_many :notes, :through => :notebooks
+
+  def favorites
+    self.notebooks.where(favorite: true)
+  end
+
+  def to_delete
+    self.notebooks.where(trashcan: true)
+  end
 end
+
+
