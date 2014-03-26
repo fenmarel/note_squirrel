@@ -40,7 +40,7 @@ $(function() {
   });
 
   $(window).on('resize', function(event) {
-    $('#notebooks-container').height($(window).height() - 132);
+    $('#notebooks-index-container').height($(window).height() - 91);
     $('#notes-container').height($(window).height() - 91);
   })
 })
