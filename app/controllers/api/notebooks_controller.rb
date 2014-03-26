@@ -39,13 +39,12 @@ class Api::NotebooksController < ApplicationController
 
   def update
     @notebook = Notebook.find(params[:id])
-    render :json => @notebook
-    return
-
 
     if @notebook.update(update_notebook_params)
       render :json => @notebook
     else
+      render :text => "WTF"
+      return
       render :json => @notebook.errors, status: 422
     end
   end
