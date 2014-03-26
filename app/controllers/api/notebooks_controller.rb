@@ -43,8 +43,6 @@ class Api::NotebooksController < ApplicationController
     if @notebook.update(update_notebook_params)
       render :json => @notebook
     else
-      render :text => "WTF"
-      return
       render :json => @notebook.errors, status: 422
     end
   end
