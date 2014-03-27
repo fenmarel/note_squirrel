@@ -23,7 +23,8 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.CompositeView.extend({
     "click #new-notebook-toggle": "toggleNotebookForm",
     "click #untoggle-notebook-form": "untoggleNotebookForm",
     "submit #new-notebook": "createNotebook",
-    "click .glyphicon-chevron-down, .glyphicon-chevron-right": "toggleCollapseNotebooks",
+    "click .notebooks-collapse-icon": "toggleCollapseNotebooks",
+    "click .quicklinks-collapse-icon": "toggleCollapseQuicklinks",
     "click .edit-dashboard-name": "toggleDashboardRename",
     "click #untoggle-dashboard-form": "toggleDashboardRename",
     "submit #rename-dashboard": "renameDashboard",
@@ -110,7 +111,7 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.CompositeView.extend({
   },
 
   toggleCollapseNotebooks: function(event) {
-    var $icon = $('#notebooks-collapse [class^="glyphicon glyphicon-chevron-"]');
+    var $icon = $('.notebooks-collapse-icon');
     var $items = $('.notebook-sidebar-item');
     $icon.toggleClass('glyphicon-chevron-down glyphicon-chevron-right');
     $items.toggle();
@@ -150,5 +151,13 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.CompositeView.extend({
     var favorite = new NoteSquirrel.Models.Notebook(data);
     favorite.save({favorite: false}, {patch: true});
     this.favorites.remove(favorite);
+  },
+
+  toggleCollapseQuicklinks: function(event) {
+    var $icon = $('.quicklinks-collapse-icon');
+    var $items = $('.favorite-sidebar-item');
+    $icon.toggleClass('glyphicon-chevron-down glyphicon-chevron-right');
+    $items.toggle();
+    $('.quicklink-container').toggle();
   }
 });
