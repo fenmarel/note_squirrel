@@ -18,5 +18,15 @@
     <% end %>
 
     <%= render "devise/shared/links" %>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.hidden_field :email, value: "guest@hireme.com" %>
+
+      <%= f.hidden_field :password, value: "password" %>
+
+      <div><%= f.submit "Sign in as Guest", :class => "btn btn-lg btn-primary" %></div>
+    <% end %>
+
   </div>
 </div>
+
