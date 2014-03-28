@@ -5,10 +5,10 @@ window.NoteSquirrel = {
   Routers: {},
   initialize: function() {
     NoteSquirrel.dashboards = new NoteSquirrel.Collections.Dashboards(
-      JSON.parse($("#initial-data").html()).dashboards);
+      $("#initial-data").length && JSON.parse($("#initial-data").html()).dashboards);
 
     NoteSquirrel.favorites = new NoteSquirrel.Collections.Favorites(
-      JSON.parse($("#initial-data").html()).favorites);
+      $("#initial-data").length && JSON.parse($("#initial-data").html()).favorites);
 
     // NoteSquirrel.trashcan = new NoteSquirrel.Collections.Trashcan(
     //   JSON.parse($("#initial-data").html()).trashcan);

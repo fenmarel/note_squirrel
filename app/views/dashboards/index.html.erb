@@ -10,8 +10,7 @@
   <script type="application/json" charset="utf-8" id="initial-data">
     {
       "dashboards": <%= @dashboards.to_json.html_safe %>,
-      "favorites": <%= @favorites.to_json.html_safe %>,
-      "trashcan": <%= @trashcan.to_json.html_safe %>
+      "favorites": <%= @favorites.to_json.html_safe %>
     }
   </script>
 <% end %>

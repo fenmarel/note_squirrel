@@ -2,11 +2,8 @@ class DashboardsController < ApplicationController
   before_action :ensure_signed_in
 
   def index
-    if user_signed_in?
-      @dashboards = current_user.dashboards
-      @favorites = current_user.favorites
-      @trashcan = current_user.to_delete
-    end
+    @dashboards = user_signed_in? ? current_user.dashboards : []
+    @favorites = user_signed_in? ? current_user.favorites : []
 
     render :index
   end
