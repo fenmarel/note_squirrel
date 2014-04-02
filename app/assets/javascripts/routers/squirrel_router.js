@@ -13,7 +13,8 @@ NoteSquirrel.Routers.SquirrelRouter = Backbone.Router.extend({
   },
 
   root: function() {
-    // some default layout, please choose workspace info or something
+    var view = new NoteSquirrel.Views.DashboardSelect();
+    this.$rootEl.html(view.render().$el);
   },
 
   dashboardShow: function(id) {
