@@ -4,8 +4,8 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.CompositeView.extend({
     this.favorites = NoteSquirrel.favorites;
     this.active = options.active;
 
-    this.listenTo(this.favorites, "add remove", this.render);
-    this.listenTo(this.collection, "add remove sync", this.render);
+    this.listenTo(this.favorites, "all", this.render);
+    this.listenTo(this.collection, "all", this.render);
 
     var that = this;
     this.collection.fetch({

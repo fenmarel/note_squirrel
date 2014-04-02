@@ -7,7 +7,7 @@ NoteSquirrel.Views.NoteListShow = Backbone.View.extend({
       this._events.bind("editNote", this.editNote);
     }
 
-    this.listenTo(this.model, "change sync", this.render);
+    this.listenTo(this.model, "all", this.render);
   },
 
   template: JST['notes/list_show'],

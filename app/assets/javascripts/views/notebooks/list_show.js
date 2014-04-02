@@ -1,6 +1,6 @@
 NoteSquirrel.Views.NotebookListShow = Backbone.View.extend({
   initialize: function(options) {
-    this.listenTo(this.model, "change", this.render);
+    this.listenTo(this.model, "all", this.render);
 
     $('#modal-content').on('submit',
                           '#editModal'+ this.model.id + ' #notebook-title-form',

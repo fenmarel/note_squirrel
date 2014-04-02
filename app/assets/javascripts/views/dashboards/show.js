@@ -2,7 +2,7 @@ NoteSquirrel.Views.DashboardShow = Backbone.CompositeView.extend({
   initialize: function(options) {
     this.notebooks = options.notebooks || this.model.notebooks();
 
-    this.listenTo(this.model, "change", this.render);
+    this.listenTo(this.model, "all", this.render);
 
     var that = this;
     this.notebooks.fetch({

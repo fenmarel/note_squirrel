@@ -3,7 +3,7 @@ NoteSquirrel.Views.NotesIndex = Backbone.CompositeView.extend({
     this._events = options._events;
     this.active = options.active;
 
-    this.listenTo(this.collection, "add sync remove", this.render);
+    this.listenTo(this.collection, "all", this.render);
 
     var that = this;
     this.collection.fetch({
