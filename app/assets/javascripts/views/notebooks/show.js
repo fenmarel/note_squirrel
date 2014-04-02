@@ -3,7 +3,9 @@ NoteSquirrel.Views.NotebookShow = Backbone.CompositeView.extend({
     var that = this;
     this.notes = this.model.notes();
 
-    this.dashboard = NoteSquirrel.dashboards.get(this.model.get('dashboard_id'));
+    this.dashboard = options.dashboard ||
+                  NoteSquirrel.dashboards.get(this.model.get('dashboard_id'));
+
     this.collection = this.dashboard.notebooks();
 
     this.collection.fetch({
@@ -13,9 +15,13 @@ NoteSquirrel.Views.NotebookShow = Backbone.CompositeView.extend({
           dashboard: that.dashboard,
           active:  that.model
         });
+
         that.addSubview('#dashboard-pane', dashPane);
 
-        var notebookPane = new NoteSquirrel.Views.NotesIndex({ collection: that.notes });
+        var notebookPane = new NoteSquirrel.Views.NotesIndex({
+          collection: that.notes
+        });
+
         that.addSubview('#notebook-pane', notebookPane);
         that.notes.fetch();
       }

@@ -26,9 +26,12 @@ NoteSquirrel.Routers.SquirrelRouter = Backbone.Router.extend({
       success: function(data) {
         var notebook = data.at(0);
         if (notebook) {
-          that.notebookShow(notebook.id);
+          that.notebookShow(notebook.id, dash);
         } else {
-          var view = new NoteSquirrel.Views.DashboardShow({ model: that.dashboards.get(id) });
+          var view = new NoteSquirrel.Views.DashboardShow({
+            model: that.dashboards.get(id),
+            notebooks: defaultNotes
+          });
           that._swapView(view);
         }
       }
@@ -36,7 +39,7 @@ NoteSquirrel.Routers.SquirrelRouter = Backbone.Router.extend({
 
   },
 
-  notebookShow: function(id) {
+  notebookShow: function(id, dashboard) {
     var notebook = new NoteSquirrel.Models.Notebook({ id: id });
     var that = this;
 
@@ -47,9 +50,12 @@ NoteSquirrel.Routers.SquirrelRouter = Backbone.Router.extend({
           success: function(data) {
             var note = data.at(0);
             if (note) {
-              that.noteShow(note.id);
+              that.noteShow(note.id, dashboard, notebook);
             } else {
-              var view = new NoteSquirrel.Views.NotebookShow({ model: notebook });
+              var view = new NoteSquirrel.Views.NotebookShow({
+                model: notebook,
+                dashboard: dashboard
+              });
               that._swapView(view);
             }
           }
@@ -58,13 +64,17 @@ NoteSquirrel.Routers.SquirrelRouter = Backbone.Router.extend({
     });
   },
 
-  noteShow: function(id) {
+  noteShow: function(id, dashboard, notebook) {
     var note = new NoteSquirrel.Models.Note({ id: id });
     var that = this;
 
     note.fetch({
       success: function() {
-        var view = new NoteSquirrel.Views.NoteShow({ model: note });
+        var view = new NoteSquirrel.Views.NoteShow({
+          model: note,
+          dashboard: dashboard,
+          notebook: notebook
+        });
         that._swapView(view);
       }
     })
