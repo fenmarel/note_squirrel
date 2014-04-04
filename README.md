@@ -1,7 +1,12 @@
 ##NoteSquirrel
 
-Hoard your notes with [NoteSquirrel](http://notesquirrel.herokuapp.com)!
+###Hoard your notes with [NoteSquirrel](http://notesquirrel.herokuapp.com)!
 
-Rails 4 back-end
-Backbone.js front-end
-Devise User Auth
+Implemented Using
+* Rails 4 back-end
+* Backbone.js front-end
+* Devise User Auth (because all my other projects use a custom auth)
+
+
+Notes:
+* see issues
