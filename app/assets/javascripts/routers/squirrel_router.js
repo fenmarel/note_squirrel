@@ -14,7 +14,7 @@ NoteSquirrel.Routers.SquirrelRouter = Backbone.Router.extend({
 
   root: function() {
     var view = new NoteSquirrel.Views.DashboardSelect();
-    this.$rootEl.html(view.render().$el);
+    this._swapView(view);
   },
 
   dashboardShow: function(id) {

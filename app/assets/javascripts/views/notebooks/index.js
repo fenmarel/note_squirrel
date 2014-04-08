@@ -30,7 +30,8 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.CompositeView.extend({
     "submit #rename-dashboard": "renameDashboard",
     "mouseenter .favorite-sidebar-item": "showOptions",
     "mouseleave .favorite-sidebar-item": "hideOptions",
-    "click .remove-favorite": "removeFavorite"
+    "click .remove-favorite": "removeFavorite",
+    "click .delete-dashboard": "deleteDashboard"
   },
 
   render: function() {
@@ -159,5 +160,15 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.CompositeView.extend({
     $icon.toggleClass('glyphicon-chevron-down glyphicon-chevron-right');
     $items.toggle();
     $('.quicklink-container').toggle();
+  },
+
+  deleteDashboard: function(event) {
+    if (confirm("Are you sure you want to delete this workspace? All notebooks and notes in this workspace will also be deleted!")) {
+      var data = $(event.target).data();
+      var dash = new NoteSquirrel.Models.Dashboard(data);
+      dash.destroy();
+      $('#dashboard-dropdown a[href$="' + dash.id + '"]').parent('li').remove();
+      Backbone.history.navigate("#", {trigger: true})
+    }
   }
 });

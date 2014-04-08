@@ -28,9 +28,13 @@
 
 <div class="list-group-item sidebar-title" id="notebooks-collapse">
   <span class="glyphicon glyphicon-chevron-down notebooks-collapse-icon"></span> Workspace: <%= dashboard.escape('title') %>
-  <span class="glyphicon glyphicon-pencil edit-dashboard-name pull-right"></span>
-</div>
 
+  <span data-id="<%= dashboard.id %>"
+        class="glyphicon glyphicon-trash delete-dashboard pull-right">
+  </span>
+  <span class="glyphicon glyphicon-pencil edit-dashboard-name pull-right">
+  </span>
+</div>
 <div id="sidebar-notebook-workspace-name-form" class="list-group-item sidebar-title">
   <form id="rename-dashboard" accept-charset="utf-8">
     <input type="text" name="dashboard[title]" autofocus
