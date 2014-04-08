@@ -40,6 +40,7 @@ $(function() {
         $('#dashboard-dropdown').prepend(
           JST['dashboards/dropdown_item']({ dash: newDash })
         );
+        Backbone.history.navigate("#/api/dashboards/" + newDash.id, {trigger: true});
       }
     });
   });

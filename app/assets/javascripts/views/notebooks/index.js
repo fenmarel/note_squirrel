@@ -107,6 +107,7 @@ NoteSquirrel.Views.NotebooksIndex = Backbone.CompositeView.extend({
         var notebook = new NoteSquirrel.Models.Notebook(newNotebook);
         that.collection.add(notebook);
         that.addNotebook.call(that, notebook);
+        Backbone.history.navigate("#/api/notebooks/" + notebook.id, {trigger: true});
       }
     });
   },

@@ -65,6 +65,7 @@ NoteSquirrel.Views.NotesIndex = Backbone.CompositeView.extend({
         var note = new NoteSquirrel.Models.Note(newNote);
         that.addNote.call(that, note);
         that.collection.add(note);
+        Backbone.history.navigate("#/api/notes/" + note.id, {trigger: true});
       }
     });
   },
