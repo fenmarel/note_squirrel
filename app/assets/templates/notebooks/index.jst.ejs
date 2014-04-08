@@ -29,11 +29,13 @@
 <div class="list-group-item sidebar-title" id="notebooks-collapse">
   <span class="glyphicon glyphicon-chevron-down notebooks-collapse-icon"></span> Workspace: <%= dashboard.escape('title') %>
 
-  <span data-id="<%= dashboard.id %>"
-        class="glyphicon glyphicon-trash delete-dashboard pull-right">
-  </span>
-  <span class="glyphicon glyphicon-pencil edit-dashboard-name pull-right">
-  </span>
+  <div id="dashboard-options">
+    <span data-id="<%= dashboard.id %>"
+          class="glyphicon glyphicon-trash delete-dashboard pull-right">
+    </span>
+    <span class="glyphicon glyphicon-pencil edit-dashboard-name pull-right">
+    </span>
+  </div>
 </div>
 <div id="sidebar-notebook-workspace-name-form" class="list-group-item sidebar-title">
   <form id="rename-dashboard" accept-charset="utf-8">
