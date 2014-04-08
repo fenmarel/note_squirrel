@@ -31,10 +31,15 @@ $(function() {
   $('#new-dashboard').on('click', function(event) {
     event.preventDefault();
 
-    var newDash = new NoteSquirrel.Models.Dashboard({ title: "New Dashboard" });
+    var newDash = new NoteSquirrel.Models.Dashboard({
+      title: "Workspace" + (NoteSquirrel.dashboards.length + 1)
+    });
     newDash.save({}, {
       success: function() {
         NoteSquirrel.dashboards.add(newDash);
+        $('#dashboard-dropdown').prepend(
+          JST['dashboards/dropdown_item']({ dash: newDash })
+        );
       }
     });
   });

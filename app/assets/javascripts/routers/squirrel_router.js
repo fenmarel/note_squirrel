@@ -30,7 +30,7 @@ NoteSquirrel.Routers.SquirrelRouter = Backbone.Router.extend({
         } else {
           var view = new NoteSquirrel.Views.DashboardShow({
             model: that.dashboards.get(id),
-            notebooks: defaultNotes
+            notebooks: defaultNotebooks
           });
           that._swapView(view);
         }
